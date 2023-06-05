@@ -1,7 +1,8 @@
 "use client";
 import { Alert, Button, Container, Snackbar, Typography } from "@mui/material";
 import TabelMhs from "./components/TabelMhs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Head from "next/head";
 
 const mahasiswa = [
   "Mahasiswa 1",
@@ -22,6 +23,7 @@ const columns_name = [
   "Aspek Penilaian 3",
   "Aspek Penilaian 4",
 ];
+const title = "FE Test - Tobias";
 
 export default function Home() {
   const [nilaiMhs, setNilaiMhs] = useState();
@@ -45,44 +47,50 @@ export default function Home() {
   };
 
   return (
-    <Container style={{ paddingTop: 50 }}>
-      <Typography
-        variant="h1"
-        fontWeight={"bold"}
-        textAlign={"center"}
-        marginBottom={4}
-      >
-        Aspek Penilaian Mahasiswa
-      </Typography>
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
 
-      <TabelMhs
-        mhs={mahasiswa}
-        columns={columns_name}
-        updateParentData={updateData}
-      />
-
-      <Button
-        variant="contained"
-        style={{ marginTop: 16, marginBottom: 50, float: "right" }}
-        onClick={saveDataMahasiswa}
-      >
-        Simpan
-      </Button>
-
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleClose}
-          severity="success"
-          sx={{ width: "100%", backgroundColor: "green", color: "white" }}
+      <Container style={{ paddingTop: 50 }}>
+        <Typography
+          variant="h1"
+          fontWeight={"bold"}
+          textAlign={"center"}
+          marginBottom={4}
         >
-          Successfully copied text in clipboard!
-        </Alert>
-      </Snackbar>
-    </Container>
+          Aspek Penilaian Mahasiswa
+        </Typography>
+
+        <TabelMhs
+          mhs={mahasiswa}
+          columns={columns_name}
+          updateParentData={updateData}
+        />
+
+        <Button
+          variant="contained"
+          style={{ marginTop: 16, marginBottom: 50, float: "right" }}
+          onClick={saveDataMahasiswa}
+        >
+          Simpan
+        </Button>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%", backgroundColor: "green", color: "white" }}
+          >
+            Successfully copied text in clipboard!
+          </Alert>
+        </Snackbar>
+      </Container>
+    </>
   );
 }
