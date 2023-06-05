@@ -7,10 +7,10 @@ import { CssBaseline } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Tobias FE Test",
-  description: "FE Test Talentlytica",
-};
+// export const metadata = {
+//   title: "Tobias FE Test",
+//   description: "FE Test Talentlytica",
+// };
 
 export default function RootLayout({ children }) {
   return (
